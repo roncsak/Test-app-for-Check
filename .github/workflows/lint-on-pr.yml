@@ -17,6 +17,9 @@ jobs:
 
 #      - name: Create aab
 #        run: gradle assemble
-
       - name: gradle lint
+        run : |
+          gradle lint
+
+      - name: Run check
         uses: roncsak/check@dev
