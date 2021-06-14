@@ -14,12 +14,18 @@ jobs:
 
       - name: Checkout project
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
 #      - name: Create aab
 #        run: gradle assemble
-      - name: gradle lint
-        run : |
-          gradle lint
+      # - name: gradle lint 
+      #   run : |
+      #     gradle lint -Dlint.baselines.continue=true
+    
+      - name: Create file to commit
+        run: |
+          touch file.txt
 
       - name: Run check
         uses: roncsak/check@dev
