@@ -19,16 +19,10 @@ jobs:
 
 #      - name: Create aab
 #        run: gradle assemble
-      # - name: gradle lint 
-      #   run : |
-      #     gradle lint -Dlint.baselines.continue=true
-    
-      - name: Create file to commit
-        run: |
-          echo $GITHUB_SHA >> file.txt
-          echo $GITHUB_REF
-          echo $GITHUB_HEAD_REF
-          echo $GITHUB_BASE_REF
+
+      - name: gradle lint 
+        run : |
+          gradle lint -Dlint.baselines.continue=true
 
       - name: Run check
         uses: roncsak/check@dev
