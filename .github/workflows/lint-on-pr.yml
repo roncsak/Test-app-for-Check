@@ -1,0 +1,28 @@
+name: 'lint'
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout project
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+#      - name: Create aab
+#        run: gradle assemble
+
+      - name: gradle lint 
+        run : |
+          gradle lint -Dlint.baselines.continue=true
+
+      - name: Run check
+        uses: roncsak/check@dev
